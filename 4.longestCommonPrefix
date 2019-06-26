@@ -19,3 +19,25 @@
 所有输入只包含小写字母 a-z 。
 
 2.code
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs==null||strs.length == 0) {
+            return ""; }
+        if(strs.length==1){
+            return strs[0];
+        }
+        /*先取第一个字符为公共前缀*/
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++){ /*从第二个元素开始遍历*/
+            while (strs[i].indexOf(prefix) != 0) { /* 如果元素前缀不是prefix   
+            int indexOf(String str)返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1*/
+                prefix = prefix.substring(0, prefix.length() - 1);/*删除最末尾的字符，缩小公共前缀，直到有公共开始的前缀部分*/
+                                                                  /*substring() 方法返回字符串的子字符串begin到end-1*/
+                if (prefix.isEmpty()){/*在while循环过程，如果发现某个元素与第一个字符串无公共部分;那就跳出查找，直接返回空串*/
+                    return ""; 
+            }
+        }
+        }
+        return prefix;
+    }}
+
